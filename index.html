@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>วิเคราะห์คอนเทนต์ Facebook • 4 บริษัท</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo"><span class="mark">↗</span> CONTENT BENCHMARK</div>
+        <div class="header-meta">Facebook · 4 บริษัท</div>
+      </nav>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <span class="period">9 กรกฎาคม – 9 ตุลาคม 2026</span>
+          <h1>มองภาพรวมคอนเทนต์<br />แล้วเจาะลึกแต่ละโพสต์</h1>
+          <p>
+            เปรียบเทียบความถี่ ประเภทสื่อ และแนวคอนเทนต์ของบริษัทคุณกับคู่แข่ง
+          </p>
+        </div>
+        <div class="status">
+          <strong>ข้อมูลที่ตรวจพบ 171 โพสต์</strong>
+          <p>เป็นจำนวนขั้นต่ำจากการตรวจหน้าเพจ ยังไม่ยืนยันว่าครบทั้งหมด</p>
+        </div>
+      </section>
+      <section
+        id="companies"
+        class="company-grid"
+        aria-label="เลือกบริษัท"
+      ></section>
+      <section class="panel controls">
+        <label
+          >บริษัท<select id="company">
+            <option value="all">ทุกบริษัท</option>
+          </select></label
+        ><label
+          >ประเภทสื่อ<select id="media">
+            <option value="all">ทุกประเภท</option>
+            <option>รูปภาพ</option>
+            <option>วิดีโอ</option>
+            <option>ยังไม่ยืนยัน</option>
+          </select></label
+        ><label
+          >แนวคอนเทนต์<select id="category">
+            <option value="all">ทุกแนวคอนเทนต์</option>
+          </select></label
+        ><label
+          >รายการ<select id="kind">
+            <option value="all">รวมทุกโพสต์</option>
+            <option value="content">ไม่รวมเปลี่ยนรูปปก</option>
+            <option value="cover">เฉพาะเปลี่ยนรูปปก</option>
+          </select></label
+        ><button class="reset" id="reset">ล้างตัวกรอง</button>
+      </section>
+      <p id="scope" class="chart-caption" aria-live="polite"></p>
+      <section class="chart-grid">
+        <article class="panel">
+          <h2>จำนวนโพสต์ที่ตรวจพบ</h2>
+          <p class="chart-caption">เปรียบเทียบปริมาณโพสต์ตามตัวกรองที่เลือก</p>
+          <div id="counts" class="chart"></div>
+        </article>
+        <article class="panel">
+          <h2>บริษัทใช้สื่อแบบไหน</h2>
+          <p class="chart-caption">
+            ความยาวแท่งแสดงจำนวนโพสต์ สีย่อยแสดงประเภทสื่อ
+          </p>
+          <div id="mediaChart" class="chart"></div>
+          <div class="legend">
+            <span><i class="swatch photo"></i>รูปภาพ</span
+            ><span><i class="swatch video"></i>วิดีโอ</span
+            ><span><i class="swatch unknown"></i>ยังไม่ยืนยัน</span>
+          </div>
+        </article>
+        <article class="panel">
+          <h2>แนวคอนเทนต์ที่พบ</h2>
+          <p class="chart-caption">
+            จัดหมวดเบื้องต้นจากข้อความที่บันทึกไว้ อาจปรับเมื่ออ่านเนื้อหาเต็ม
+          </p>
+          <div id="categories" class="chart"></div>
+        </article>
+        <article class="panel">
+          <h2>5 โพสต์ที่มีปฏิกิริยาสูง</h2>
+          <p class="chart-caption">
+            จัดอันดับจากจำนวนปฏิกิริยาที่อ่านได้ ไม่ใช่ยอดเข้าถึง ·
+            แท่งลายคือค่าประมาณ
+          </p>
+          <div id="top" class="chart"></div>
+        </article>
+      </section>
+      <section class="panel">
+        <div class="table-top">
+          <div>
+            <h2>รายละเอียดโพสต์</h2>
+            <p class="chart-caption">
+              เปิดลิงก์เพื่อดูโพสต์ต้นทาง และตรวจตัวเลข ณ เวลาปัจจุบัน
+            </p>
+          </div>
+          <label
+            >เรียงตาม<select id="sort">
+              <option value="original">ลำดับที่ตรวจพบ</option>
+              <option value="reactions">ปฏิกิริยามากที่สุด</option>
+            </select></label
+          >
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>บริษัท / โพสต์</th>
+                <th>สื่อ / แนวคอนเทนต์</th>
+                <th>ปฏิกิริยา</th>
+                <th>ความคิดเห็น</th>
+                <th>แชร์</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="pager">
+          <span id="pageInfo" aria-live="polite"></span>
+          <div class="buttons">
+            <button id="prev">← ก่อนหน้า</button
+            ><button id="next">ถัดไป →</button>
+          </div>
+        </div>
+      </section>
+      <details class="panel">
+        <summary>วิธีอ่านข้อมูลและข้อจำกัด</summary>
+        <div class="method">
+          <div>
+            <h3>สิ่งที่ตัวเลขบอกได้</h3>
+            <p>
+              171 รายการเป็นโพสต์ที่ตรวจพบจากหน้าเพจในช่วงที่ระบุ
+              โดยใช้ลิงก์โพสต์ไม่ซ้ำกัน มี Brighten 60, Titan 61, Tradesol 17
+              และ Terawatt 33 รายการ
+            </p>
+            <p>
+              Terawatt มีการเปลี่ยนรูปปก 2 รายการ จึงมีคอนเทนต์ทั่วไปที่ตรวจพบ
+              31 รายการ ใช้ตัวกรองเพื่อแยกรูปปกได้
+            </p>
+            <p>
+              ตัวเลขแบบ “พัน” เป็นค่าที่ Facebook แสดงแบบย่อ
+              กราฟใช้ค่าประมาณเพื่อจัดอันดับ ช่อง “ไม่ทราบ” ไม่ได้หมายถึงศูนย์
+            </p>
+          </div>
+          <div>
+            <h3>สิ่งที่ยังยืนยันไม่ได้</h3>
+            <p>
+              หน้าเพจอาจแสดงโพสต์ไม่ครบ วันที่บางรายการแสดงแบบสัมพัทธ์
+              ประเภทสื่อบางรายการยังไม่ยืนยัน และหมวดคอนเทนต์เป็นการจัดเบื้องต้น
+              จึงไม่รับรองความครบถ้วน 100%
+            </p>
+            <p>
+              ยอดเข้าถึงของคู่แข่งไม่ได้เปิดเผยในข้อมูลนี้ ปฏิกิริยา ความคิดเห็น
+              และแชร์เป็นตัวชี้วัดคนละอย่างกับยอดเข้าถึง
+            </p>
+            <p>
+              ข้อมูลเป็นภาพ ณ เวลาตรวจ ไม่ดึงข้อมูลสดจาก Facebook และไม่กดไลก์
+              แสดงความคิดเห็น หรือแชร์แทนคุณ
+            </p>
+          </div>
+        </div>
+      </details>
+      <footer>
+        CONTENT BENCHMARK · ตรวจข้อมูล 9 ตุลาคม 2026 · อ้างอิงลิงก์ Facebook
+        ในแต่ละโพสต์
+      </footer>
+    </main>
+    <script src="audit-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
